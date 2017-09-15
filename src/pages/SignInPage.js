@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import React, { Component } from 'react'
 
-export default class SignIn extends Component {
+class SignIn extends Component {
     render(){
         return (
             <div>
@@ -10,3 +10,16 @@ export default class SignIn extends Component {
         )
     }
 }
+
+
+
+export default connect(
+    (state, ownProps) => { console.log(state);console.log(ownProps);return { active: false }},
+    (dispatch, ownProps) => { return {
+        onClick: () => {
+        dispatch({type: 'Hello'})
+        }
+    }
+
+    
+})(SignIn)
