@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import React, { Component } from 'react'
 
-class SignIn extends Component {
+class LogIn extends Component {
     render(){
         return (
             <div>
@@ -22,4 +22,4 @@ export default connect(
     }
 
     
-})(SignIn)
+})(LogIn)

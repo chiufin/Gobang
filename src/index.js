@@ -1,18 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 import './styles/index.css';
-import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import { counter } from './reducers/CurrentUserReducer'
+import { Router, hashHistory } from 'react-router'
+import { syncHistoryWithStore } from 'react-router-redux'
+import routes from './routes'
+import { configureStore } from './store'
 
-
-let store = createStore(counter)
-
+const state = window.__initialState__ || undefined
+const store = configureStore(hashHistory, state)
+const history = syncHistoryWithStore(hashHistory, store)
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <Router history={history} routes={routes}/>
     </Provider>, document.getElementById('root'));
 registerServiceWorker();

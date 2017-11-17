@@ -10,7 +10,10 @@
   },
   "devDependencies": {
     "react-scripts": "1.0.6",
-    "redux-devtools": "^3.4.0"
+    "redux-devtools": "^3.4.0",
+    "react-router": "^3.0.5",
+    "react-router-redux": "^4.0.7",
+    "redux-thunk": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
