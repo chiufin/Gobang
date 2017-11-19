@@ -3,7 +3,7 @@ import { routerReducer, routerMiddleware } from 'react-router-redux'
 import thunk from 'redux-thunk'
 
 // import { reducer as formReducer } from 'redux-form'
-import { counter } from './reducers/CurrentUserReducer'
+import CounterReducer from './reducers/CounterReducer'
 
 import ActionTypes from './constants/ActionTypes'
 
@@ -11,7 +11,7 @@ export const configureStore = (history, initialState) => {
 
   
   const appReducer = combineReducers({
-    counter,
+    CounterReducer,
     // form: formReducer,
     routing: routerReducer
   })

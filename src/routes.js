@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, IndexRoute } from 'react-router'
 import App from './components/App'
 import LogInPage from './pages/LoginPage'
-// import AdminHomePage from './pages/AdminHomePage'
+import AdminHomePage from './pages/AdminHomePage'
 
 import NotFoundPage from './pages/NotFoundPage'
 // import ServerErrorPage from './pages/ServerErrorPage'
@@ -15,7 +15,7 @@ const routes = (
       <IndexRoute component={LogInPage} />
       <Route path="login" component={LogInPage} />
     {/* <Route component={Auth} __useAuth={true}> */}
-      {/* <Route path="adminHomePage" component={AdminHomePage} /> */}
+      {<Route path="home" component={AdminHomePage} />}
      
     {/* </Route> */}
     {/* <Route path="serverError" component={ServerErrorPage} /> */}

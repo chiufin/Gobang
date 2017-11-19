@@ -8,4 +8,16 @@
 5. ( redux-thunk )
 6. Sass 
 
+## Habit
+- ES6
+1. es6 constructor props ?
+2. es6 ...
 
+- React / Redux fnt
+1. react-redux connect
+2. constant action types
+3. reducerUtils how to make it
+4. connect action : bindActionCreators
+
+- General
+1. session / cookie
