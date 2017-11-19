@@ -1,0 +1,14 @@
+@startuml
+
+Action -> Saga: Dispatch POPUP_APPEAR, condition
+Saga --> Saga: If dynamic content, create payload
+Saga -> Reducer: Dispatch POPUP_CONTENT, condition, (payload)
+PopupConfig -> Reducer: Load Content from PopupConfig
+Reducer -> Container: Show popup
+Container -> Saga: Click btn or link
+Saga --> Saga: If have link href, create payload
+PopupConfig -> Saga: Load sagaFnts
+Saga -> Action: Close Popup
+Saga --> Action: Run certain sagaFnt
+
+@enduml

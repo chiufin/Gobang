@@ -22,6 +22,9 @@ class LogIn extends Component {
                 <Input id={'account'} placeholder={'Account'} />
                 <Input id={'password'} placeholder={'Password'} type={'password'} />
                 <button onClick={this.login}>Login</button> 
+
+
+                <button onClick={this.props.actions.showPopup}>Show Popup</button>
             </div>
         )
     }

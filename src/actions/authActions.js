@@ -19,3 +19,9 @@ export const login = (account, password) => dispatch => {
 export const signOut = () => ({
     type: ActionTypes.CLEAN_STORE
 })
+
+
+export const showPopup = () => dispatch => dispatch({
+    type: ActionTypes.POPUP_APPEAR,
+    condition: 'uhOh'
+})
