@@ -4,6 +4,7 @@ import thunk from 'redux-thunk'
 
 // import { reducer as formReducer } from 'redux-form'
 import CounterReducer from './reducers/CounterReducer'
+import AuthReducer from './reducers/AuthReducer'
 
 import ActionTypes from './constants/ActionTypes'
 
@@ -12,6 +13,7 @@ export const configureStore = (history, initialState) => {
   
   const appReducer = combineReducers({
     CounterReducer,
+    AuthReducer,
     // form: formReducer,
     routing: routerReducer
   })
