@@ -7,6 +7,7 @@
 4. ( redux-form )
 5. ( redux-thunk )
 6. Sass 
+7. Express.js to send mock api
 
 ## Habit
 - ES6
