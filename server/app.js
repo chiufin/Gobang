@@ -9,17 +9,18 @@ app.get('/', function (req, res) {
   res.send('Hello World!');
 });
 
-app.post('/api/signIn', function (req, res) {
+app.post('/api/login', function (req, res) {
     //http://localhost:5000/api/signIn?hello=stacy
     //body -> raw
 
-    console.log('---------------------- /api/signIn')
-    console.log(req.param('hello'));
+    console.log('---------------------- /api/login')
+    // console.log(req.param('hello'));
     console.log(req.body);
-
+    console.log(req.body.account)
     res.json({
         userName: req.body.account,
-        role: 'ADMIN'
+        role: 'ADMIN',
+        hello: 'world'
     })
   });
 

@@ -1,15 +1,18 @@
 import { connect } from 'react-redux'
 import React, { Component } from 'react'
 import Input from '../components/Input'
+import { bindActionCreators } from 'redux';
+import * as authActions from '../actions/authActions'
 
 class LogIn extends Component {
     constructor(props){
         super(props)
-        this.signIn = this.signIn.bind(this)
+        this.login = this.login.bind(this)
     }
 
-    signIn(){
-        console.log('sign in')
+    login(){
+        console.log(this)
+        this.props.actions.login('chiufin@hotmail.com', 'cho123')
     }
 
     render(){
@@ -18,7 +21,7 @@ class LogIn extends Component {
                 <h1>Sign In</h1>
                 <Input id={'account'} placeholder={'Account'} />
                 <Input id={'password'} placeholder={'Password'} type={'password'} />
-                <button onClick={this.signIn}>SignIn</button> 
+                <button onClick={this.login}>Login</button> 
             </div>
         )
     }
@@ -28,9 +31,7 @@ class LogIn extends Component {
 
 export default connect(
     (state, ownProps) => { console.log(state);console.log(ownProps);return { active: false }},
-    (dispatch, ownProps) => { return {
-        onClick: () => {
-        dispatch({type: 'Hello'})
-        }
-    }
-})(LogIn)
+    (dispatch, ownProps) => ({
+        actions: bindActionCreators({...authActions}, dispatch)
+    })
+)(LogIn)
