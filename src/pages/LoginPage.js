@@ -1,30 +1,24 @@
 import { connect } from 'react-redux'
 import React, { Component } from 'react'
-import Input from '../components/Input'
 import { bindActionCreators } from 'redux';
 import * as authActions from '../actions/authActions'
-
+import SignInForm from '../forms/SignInForm'
 class LogIn extends Component {
     constructor(props){
         super(props)
         this.login = this.login.bind(this)
     }
 
-    login(){
-        console.log(this)
-        this.props.actions.login('chiufin@hotmail.com', 'cho123')
+    login(values){
+        console.log(values)
+        return this.props.actions.login('chiufin@hotmail.com', 'cho123')
     }
 
     render(){
         return (
             <div>
                 <h1>Sign In</h1>
-                <Input id={'account'} placeholder={'Account'} />
-                <Input id={'password'} placeholder={'Password'} type={'password'} />
-                <button onClick={this.login}>Login</button> 
-
-
-                <button onClick={this.props.actions.showPopup}>Show Popup</button>
+                <SignInForm onSubmit={this.login}/>
             </div>
         )
     }

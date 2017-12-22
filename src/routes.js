@@ -3,6 +3,7 @@ import { Route, IndexRoute } from 'react-router'
 import App from './containers/App'
 import LogInPage from './pages/LoginPage'
 import AdminHomePage from './pages/AdminHomePage'
+import Form from './forms/SignInForm'
 
 import NotFoundPage from './pages/NotFoundPage'
 // import ServerErrorPage from './pages/ServerErrorPage'
@@ -14,6 +15,7 @@ const routes = (
   <Route path="/" component={App}>
       <IndexRoute component={LogInPage} />
       <Route path="login" component={LogInPage} />
+      <Route path="form" component={Form} />
     <Route component={Auth} __useAuth={true}>
       {<Route path="home" component={AdminHomePage} />}
      

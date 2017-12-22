@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import { routerReducer, routerMiddleware } from 'react-router-redux'
 import thunk from 'redux-thunk'
+import { reducer as formReducer } from 'redux-form'
 import createSagaMiddleware from 'redux-saga'
 import mySaga from './sagas'
 
@@ -18,7 +19,7 @@ export const configureStore = (history, initialState) => {
     CounterReducer,
     AuthReducer,
     AppReducer,
-    // form: formReducer,
+    form: formReducer,
     routing: routerReducer
   })
 

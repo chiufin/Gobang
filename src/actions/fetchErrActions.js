@@ -4,9 +4,7 @@ import ActionTypes from '../constants/ActionTypes'
 
 let fetchAction = (fetchName, payload) => dispatch => {
     return apiLibrary(fetchName, payload)
-    .then(res => {
-        return res
-    })
+    .then(res => res )
     .catch(err => {
         console.log(`%cErr:`, "color: orange" )
         console.log(err)
@@ -26,10 +24,9 @@ let fetchAction = (fetchName, payload) => dispatch => {
                     .then(err => {
                         console.log(err)
                         dispatch({
-                        type: ActionTypes.SERVER_ERROR, 
-                            errStatus: err.status
+                            type: ActionTypes.POPUP_APPEAR,
+                            condition: 'uhOh'
                         })
-                        dispatch(push('serverError'))
                     })
                 }else{
                     throw err
