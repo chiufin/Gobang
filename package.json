@@ -6,8 +6,11 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
+    "husky": "^0.14.3",
+    "lint-staged": "^6.0.0",
     "node-sass-chokidar": "^0.0.3",
     "npm-run-all": "^4.1.2",
+    "prettier": "^1.9.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.6",
@@ -23,6 +26,12 @@
     "redux-devtools": "^3.4.0",
     "redux-thunk": "^2.1.0"
   },
+  "lint-staged": {
+    "src/**/*.{js,jsx,json,css}": [
+     "prettier --single-quote --write",
+     "git add"
+    ]
+  },
   "scripts": {
     "build-css": "node-sass-chokidar src/styles/sass/ -o src/styles/",
     "watch-css": "npm run build-css && node-sass-chokidar src/styles/sass/ -o src/styles/ --watch --recursive",
@@ -31,6 +40,7 @@
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm-run-all -p build-css build-js",
     "test": "react-scripts test --env=jsdom",
+    "precommit": "lint-staged",
     "analyze": "source-map-explorer build/static/js/main.*",
     "eject": "react-scripts eject"
   }
