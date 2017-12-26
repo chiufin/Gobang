@@ -40,6 +40,7 @@
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm-run-all -p build-css build-js",
     "test": "react-scripts test --env=jsdom",
+    "flow": "flow",
     "precommit": "lint-staged",
     "analyze": "source-map-explorer build/static/js/main.*",
     "eject": "react-scripts eject"

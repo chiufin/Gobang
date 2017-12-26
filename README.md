@@ -3,22 +3,15 @@
 ## using tools
 1. react : create-react-app
 2. redux (add redux tool)
-3. ( react-router 3 )
-4. ( redux-form )
-5. ( redux-thunk )
+3. react-router 3
+4. redux-form
+5. redux-thunk
 6. Sass 
 7. Express.js to send mock api
+8. using flow not typescript(why)
 
-## Habit
-- ES6
-1. es6 constructor props ?
-2. es6 ...
-
-- React / Redux fnt
-1. react-redux connect
-2. constant action types
-3. reducerUtils how to make it
-4. connect action : bindActionCreators
-
-- General
-1. session / cookie
+## Dictionary
+### Static type check
+ 1. `flow` check static type at coding time, and also can check on running time
+ 2. react default proptypes : check on running time
+ 3. typescript : complie
