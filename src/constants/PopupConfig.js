@@ -10,25 +10,24 @@
 }
 */
 
-//template : 3 layouts 
+//template : 3 layouts
 //singleBtnGrey, singleBtnWhite , default
 
 //content : 2 type - function(dynamic content), object(static content)
 //* dynamic content use "payload" as variable
 
-//buttons click -> sagaFnts run 
-//sagaFnts : no need to setting popup closing 
+//buttons click -> sagaFnts run
+//sagaFnts : no need to setting popup closing
 
 //linkMessage click -> linkFnt run
 
-
 export default {
-    uhOh : {
-        template: 'singleBtnGrey',
-        content: {
-            title: ["Uh Oh!"],
-            message: "Something went wrong. Please try again.",
-            buttons: ['OK']
-        }
+  uhOh: {
+    template: 'singleBtnGrey',
+    content: {
+      title: ['Uh Oh!'],
+      message: 'Something went wrong. Please try again.',
+      buttons: ['OK']
     }
-}
+  }
+};
