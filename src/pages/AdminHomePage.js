@@ -10,9 +10,9 @@ class AdminHome extends Component {
     this.renderResult = this.renderResult.bind(this);
   }
 
-  // componentDidMount(){
-  //   this.props.actions.checkResult()
-  // }
+  componentDidMount() {
+    this.props.actions.checkResult();
+  }
 
   renderPiece(piece) {
     return piece === 'x' ? (

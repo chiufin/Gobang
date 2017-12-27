@@ -3,3 +3,38 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.board__line{
+  display: flex;
+  margin: 0 auto;
+  background: lightblue;
+  width: 150px;
+  height: 30px;
+}
+
+.board__piece{
+  border: 1px solid #fff;
+  width: 28px;
+  height: 28px;
+}
+
+.board__piece:hover{
+  cursor: pointer;
+  background: cyan;
+}
+
+.board__piece__black{
+  margin: 4px;
+  width: 20px;
+  height: 20px;
+  background: #333;
+  border-radius: 50%;
+}
+
+.board__piece__white{
+  margin: 4px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+}
