@@ -7,3 +7,7 @@ export const increase = () => ({
 export const decrease = () => ({
   type: ActionTypes.DECREASE
 });
+
+export const checkResult = () => ({
+  type: ActionTypes.CHECK_RESULT
+});

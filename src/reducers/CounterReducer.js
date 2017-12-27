@@ -2,9 +2,10 @@ import ActionTypes from '../constants/ActionTypes';
 import { updateObject, createReducer } from './reducerUtils';
 
 const initialState = {
-  player: true,
+  player: 'x',
+  result: null,
   board: [
-    [null, null, 'x', null, null],
+    ['x', 'x', 'x', 'x', 'x'],
     [null, null, null, null, null],
     [null, null, null, null, null],
     [null, null, 'o', null, null],

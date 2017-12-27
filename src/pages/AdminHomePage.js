@@ -7,7 +7,12 @@ class AdminHome extends Component {
   constructor(props) {
     super(props);
     this.renderPiece = this.renderPiece.bind(this);
+    this.renderResult = this.renderResult.bind(this);
   }
+
+  // componentDidMount(){
+  //   this.props.actions.checkResult()
+  // }
 
   renderPiece(piece) {
     return piece === 'x' ? (
@@ -17,13 +22,25 @@ class AdminHome extends Component {
     );
   }
 
+  renderResult(result) {
+    switch (result) {
+      case 'x':
+        return '黑棋獲勝';
+      case 'o':
+        return '白棋獲勝';
+      default:
+        return '   -   ';
+    }
+  }
+
   render() {
     return (
       <div>
         <h1>Hello</h1>
 
         <div>
-          <p>Player:{this.props.player ? '黑' : '白'}</p>
+          <p>Player:{this.props.player === 'x' ? '黑' : '白'}</p>
+          <p>Result:{this.renderResult(this.props.result)}</p>
         </div>
 
         <div>
