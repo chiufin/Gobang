@@ -2,7 +2,15 @@ import ActionTypes from '../constants/ActionTypes';
 import { updateObject, createReducer } from './reducerUtils';
 
 const initialState = {
-  num: 0
+  player: true,
+  board: [
+    [null, null, 'x', null, null],
+    [null, null, null, null, null],
+    [null, null, null, null, null],
+    [null, null, 'o', null, null],
+    [null, null, null, null, null]
+  ],
+  num: 1
 };
 
 const increment = (state, action) =>
