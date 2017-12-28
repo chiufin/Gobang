@@ -8,10 +8,7 @@ class AdminHome extends Component {
     super(props);
     this.renderPiece = this.renderPiece.bind(this);
     this.renderResult = this.renderResult.bind(this);
-  }
-
-  componentDidMount() {
-    this.props.actions.checkResult();
+    this.playChess = this.playChess.bind(this);
   }
 
   renderPiece(piece) {
@@ -33,6 +30,12 @@ class AdminHome extends Component {
     }
   }
 
+  playChess(x, y) {
+    if (!this.props.board[y][x]) {
+      this.props.actions.newStep([x, y], this.props.player);
+    }
+  }
+
   render() {
     console.log(this.props);
     return (
@@ -45,12 +48,16 @@ class AdminHome extends Component {
         </div>
 
         <div>
-          {this.props.board.map((line, i) => {
+          {this.props.board.map((line, y) => {
             return (
-              <div className="board__line" key={`line` + i}>
-                {line.map((piece, i) => {
+              <div className="board__line" key={`line` + y}>
+                {line.map((piece, x) => {
                   return (
-                    <div className="board__piece" key={`piece` + i}>
+                    <div
+                      className="board__piece"
+                      key={`piece` + x}
+                      onClick={this.playChess.bind(this, x, y)}
+                    >
                       {piece ? this.renderPiece(piece) : null}
                     </div>
                   );
@@ -73,7 +80,8 @@ export default connect(
   (state, ownProps) => ({
     num: state.CounterReducer.num,
     board: state.CounterReducer.board,
-    result: state.CounterReducer.result
+    result: state.CounterReducer.result,
+    player: state.CounterReducer.player
   }),
   (dispatch, ownProps) => ({
     actions: bindActionCreators({ ...counterActions }, dispatch)

@@ -2,15 +2,15 @@ import ActionTypes from '../constants/ActionTypes';
 import { updateObject, createReducer } from './reducerUtils';
 
 const initialState = {
-  player: 'o',
+  player: 'x',
   result: null,
   board: [
-    ['o', 'o', 'o', 'o', 'o', null],
-    ['o', 'o', null, null, null, 'x'],
-    [null, null, null, null, null, 'o'],
-    [null, null, 'o', null, null, null],
-    [null, null, null, 'o', 'o', null],
-    [null, null, null, 'o', 'x', null]
+    [null, null, null, null, null, null],
+    [null, null, null, null, null, null],
+    [null, null, null, null, null, null],
+    [null, null, null, null, null, null],
+    [null, null, null, null, null, null],
+    [null, null, null, null, null, null]
   ],
   newStep: [0, 1],
   ignore: {
@@ -68,11 +68,25 @@ const increment = (state, action) =>
 const decrement = (state, action) =>
   updateObject(state, { num: state.num - 1 });
 
+const newStep = (state, action) => {
+  state.board[action.newStep[1]][action.newStep[0]] = state.player;
+
+  let nextPlayer = '';
+  if (state.player === 'x') {
+    nextPlayer = 'o';
+  } else if (state.player === 'o') {
+    nextPlayer = 'x';
+  }
+
+  return updateObject(state, { newStep: action.newStep, player: nextPlayer });
+};
+
 const changeGameResult = (state, action) =>
   updateObject(state, { result: action.result });
 
 export default createReducer(initialState, {
   [ActionTypes.INCREASE]: increment,
   [ActionTypes.DECREASE]: decrement,
+  [ActionTypes.NEW_STEP]: newStep,
   [ActionTypes.CHANGE_GAME_RESULT]: changeGameResult
 });

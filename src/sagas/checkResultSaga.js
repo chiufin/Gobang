@@ -2,12 +2,15 @@ import ActionTypes from '../constants/ActionTypes';
 // import _ from 'lodash';
 import { all, take, call, select, put } from 'redux-saga/effects';
 
-let winLogin = (board, newStep, player, ignore) => {
+let winLogic = (board, newStep, player, ignore) => {
+  //minor than 9 steps, don't need to check
   console.log(player);
+  console.log(newStep);
   //line
   let count = [0];
-  for (let i = 0; i < board[newStep[0]].length; i++) {
-    let piece = board[newStep[0]][i];
+  for (let i = 0; i < board[newStep[1]].length; i++) {
+    console.log(`piece: ${board[newStep[1]][i]}`);
+    let piece = board[newStep[1]][i];
     if (piece === player) {
       count[count.length - 1] = count[count.length - 1] + 1;
       console.log('--- x');
@@ -37,11 +40,9 @@ let winLogin = (board, newStep, player, ignore) => {
 
 function* checkResult() {
   while (true) {
-    yield take(ActionTypes.CHECK_RESULT);
-    const {
-      CounterReducer: { board, newStep, player, ignore }
-    } = yield select();
-    let result = winLogin(board, newStep, player, ignore);
+    const { newStep, player } = yield take(ActionTypes.NEW_STEP);
+    const { CounterReducer: { board, ignore } } = yield select();
+    let result = winLogic(board, newStep, player, ignore);
     if (result) {
       yield put({ type: 'CHANGE_GAME_RESULT', result: player });
     }

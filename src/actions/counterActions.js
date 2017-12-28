@@ -8,6 +8,8 @@ export const decrease = () => ({
   type: ActionTypes.DECREASE
 });
 
-export const checkResult = () => ({
-  type: ActionTypes.CHECK_RESULT
+export const newStep = (newStep, player) => ({
+  type: ActionTypes.NEW_STEP,
+  newStep,
+  player
 });

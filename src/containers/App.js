@@ -22,7 +22,6 @@ class App extends Component {
 
 export default connect(
   state => {
-    console.log(state);
     return {
       popupShow: state.AppReducer.popup.show
     };
