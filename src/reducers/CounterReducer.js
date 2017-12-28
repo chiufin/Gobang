@@ -2,14 +2,15 @@ import ActionTypes from '../constants/ActionTypes';
 import { updateObject, createReducer } from './reducerUtils';
 
 const initialState = {
-  player: 'x',
+  player: 'o',
   result: null,
   board: [
-    ['x', 'x', 'x', 'x', 'x'],
-    ['o', 'o', null, null, null],
-    [null, null, null, null, null],
-    [null, null, 'o', null, null],
-    [null, null, null, 'o', 'o']
+    ['o', 'o', 'o', 'o', 'o', null],
+    ['o', 'o', null, null, null, 'x'],
+    [null, null, null, null, null, 'o'],
+    [null, null, 'o', null, null, null],
+    [null, null, null, 'o', 'o', null],
+    [null, null, null, 'o', 'x', null]
   ],
   newStep: [0, 1],
   ignore: {
@@ -63,10 +64,15 @@ const initialState = {
 
 const increment = (state, action) =>
   updateObject(state, { num: state.num + 1 });
+
 const decrement = (state, action) =>
   updateObject(state, { num: state.num - 1 });
 
+const changeGameResult = (state, action) =>
+  updateObject(state, { result: action.result });
+
 export default createReducer(initialState, {
   [ActionTypes.INCREASE]: increment,
-  [ActionTypes.DECREASE]: decrement
+  [ActionTypes.DECREASE]: decrement,
+  [ActionTypes.CHANGE_GAME_RESULT]: changeGameResult
 });

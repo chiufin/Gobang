@@ -34,6 +34,7 @@ class AdminHome extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <h1>Hello</h1>
@@ -71,7 +72,8 @@ class AdminHome extends Component {
 export default connect(
   (state, ownProps) => ({
     num: state.CounterReducer.num,
-    board: state.CounterReducer.board
+    board: state.CounterReducer.board,
+    result: state.CounterReducer.result
   }),
   (dispatch, ownProps) => ({
     actions: bindActionCreators({ ...counterActions }, dispatch)
