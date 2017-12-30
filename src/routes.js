@@ -3,7 +3,7 @@ import { Route, IndexRoute } from 'react-router';
 import App from './containers/App';
 import LogInPage from './pages/LoginPage';
 import AdminHomePage from './pages/AdminHomePage';
-import CanvasPage from './pages/CanvasPage';
+import GamePage from './pages/GamePage';
 import Form from './forms/SignInForm';
 
 import NotFoundPage from './pages/NotFoundPage';
@@ -19,7 +19,7 @@ const routes = (
     <Route path="form" component={Form} />
     <Route component={Auth} __useAuth={true}>
       {<Route path="home" component={AdminHomePage} />}
-      {<Route path="canvas" component={CanvasPage} />}
+      {<Route path="game" component={GamePage} />}
     </Route>
     {/* <Route path="serverError" component={ServerErrorPage} /> */}
     {/* <Route path="noInternet" component={InternetDisconnectedPage} /> */}

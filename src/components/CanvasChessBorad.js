@@ -1,10 +1,7 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import * as counterActions from '../actions/counterActions';
-// import _ from 'lodash'
 
-class Canvas extends Component {
+class CanvasChessBorad extends Component {
   constructor(props) {
     super(props);
     this.playChess = this.playChess.bind(this);
@@ -102,7 +99,7 @@ class Canvas extends Component {
   render() {
     return (
       <div>
-        <h1>Canvas</h1>
+        <span>Canvas</span>
         <div style={{ margin: '30px' }}>
           <canvas
             ref="canvas"
@@ -118,11 +115,4 @@ class Canvas extends Component {
   }
 }
 
-export default connect(
-  (state, ownProps) => ({
-    player: state.CounterReducer.player
-  }),
-  (dispatch, ownProps) => ({
-    actions: bindActionCreators({ ...counterActions }, dispatch)
-  })
-)(Canvas);
+export default CanvasChessBorad;
