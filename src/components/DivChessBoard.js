@@ -13,7 +13,6 @@ class DivChessBoard extends Component {
   }
 
   render() {
-    console.log('render ----- ');
     const { board, playing, playChess } = this.props;
     return (
       <div>

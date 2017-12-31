@@ -48,16 +48,17 @@ class CanvasPage extends Component {
           <p>Result:{this.renderResult(result)}</p>
         </div>
 
-        {/* <CanvasChesBoard
-          board={board}
-          playChess={this.playChess}
-        /> */}
-
-        <DivChessBoard
+        <CanvasChesBoard
           board={board}
           playing={playing}
           playChess={this.playChess}
         />
+
+        {/* <DivChessBoard
+          board={board}
+          playing={playing}
+          playChess={this.playChess}
+        /> */}
       </div>
     );
   }
