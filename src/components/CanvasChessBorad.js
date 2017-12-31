@@ -58,7 +58,7 @@ class CanvasChessBorad extends Component {
 
   clickChess(e) {
     console.log('playChess');
-    let x = (e.pageX - 210) / 30;
+    let x = (e.pageX - 81) / 30;
     let y = (e.pageY - 383) / 30;
 
     console.log(`${e.pageX},${e.pageY}`);

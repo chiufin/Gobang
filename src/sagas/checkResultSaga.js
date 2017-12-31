@@ -5,6 +5,7 @@ import { fiveInLine } from '../utils/gobangWinLogic';
 
 let winLogic = (board, playing, ignore) => {
   console.log('winLogic');
+  console.log(board);
   if (playing.length >= 9) {
     let lineResult = fiveInLine(board, playing);
     if (lineResult) {

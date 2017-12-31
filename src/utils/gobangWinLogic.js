@@ -17,8 +17,6 @@ export const fiveInLine = (board, playing) => {
   for (let i = 0; i < count.length; i++) {
     if (count[i] === 5) {
       return true;
-    } else {
-      return false;
     }
   }
 };
