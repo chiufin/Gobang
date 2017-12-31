@@ -1,5 +1,9 @@
 import ActionTypes from '../constants/ActionTypes';
-import { updateObject, createReducer } from '../utils/reducerUtils';
+import {
+  updateObject,
+  updateImmutableObject,
+  createReducer
+} from '../utils/reducerUtils';
 
 const initialState = {
   result: null,
@@ -72,14 +76,21 @@ const newStep = (state, action) => {
     thisPlayer = 'o';
   }
 
-  return updateObject(state, {
-    playing: [
-      {
-        player: thisPlayer,
-        x: action.x,
-        y: action.y
+  return updateImmutableObject(state, {
+    playing: {
+      $push: [
+        {
+          player: thisPlayer,
+          x: action.x,
+          y: action.y
+        }
+      ]
+    },
+    board: {
+      [action.y]: {
+        [action.x]: { $set: thisPlayer }
       }
-    ]
+    }
   });
 };
 

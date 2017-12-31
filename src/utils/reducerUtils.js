@@ -1,3 +1,8 @@
+import update from 'immutability-helper';
+
+export const updateImmutableObject = (previousObj, newObj) =>
+  update(previousObj, newObj);
+
 export const updateObject = (previousObj, newObj) =>
   Object.assign({}, previousObj, newObj);
 

@@ -44,17 +44,17 @@ function* checkResult() {
     const { CounterReducer: { board, ignore, playing } } = yield select();
     let player = '';
     console.log(playing);
-    // if(playing.length === 0){
-    //   player = 'x'
-    // }else if(playing[playing.length-1].player === 'o'){
-    //   player = 'x'
-    // }else if(playing[playing.length-1].player === 'x'){
-    //   player = 'o'
-    // }
-    // let result = winLogic(board, newStep, player, ignore);
-    // if (result) {
-    //   yield put({ type: 'CHANGE_GAME_RESULT', result: player });
-    // }
+    if (playing.length === 0) {
+      player = 'x';
+    } else if (playing[playing.length - 1].player === 'o') {
+      player = 'x';
+    } else if (playing[playing.length - 1].player === 'x') {
+      player = 'o';
+    }
+    let result = winLogic(board, newStep, player, ignore);
+    if (result) {
+      yield put({ type: 'CHANGE_GAME_RESULT', result: player });
+    }
   }
 }
 
