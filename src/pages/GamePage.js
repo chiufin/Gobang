@@ -24,33 +24,40 @@ class CanvasPage extends Component {
 
   playChess(x, y) {
     if (!this.props.board[y][x]) {
-      this.props.actions.newStep([x, y], this.props.player);
+      this.props.actions.newStep(x, y);
+    }
+  }
+
+  renderPlayer(playing) {
+    if (playing.length === 0) {
+      return <p>Player: 黑</p>;
+    } else if (playing[playing.length - 1].player === 'o') {
+      return <p>Player: 黑</p>;
+    } else if (playing[playing.length - 1].player === 'x') {
+      return <p>Player: 白</p>;
     }
   }
 
   render() {
-    const { result, player, board } = this.props;
+    const { result, board, playing } = this.props;
 
     return (
       <div>
         <div>
-          {result === null ? (
-            <p>Player:{player === 'x' ? '黑' : '白'}</p>
-          ) : null}
+          {this.renderPlayer(playing)}
           <p>Result:{this.renderResult(result)}</p>
         </div>
 
-        <CanvasChesBoard
+        {/* <CanvasChesBoard
           board={board}
-          result={result}
-          player={player}
+          playChess={this.playChess}
+        /> */}
+
+        <DivChessBoard
+          board={board}
+          playing={playing}
           playChess={this.playChess}
         />
-
-        {/* <DivChessBoard board={board} 
-                       result={result} 
-                       player={player}
-                       playChess={this.playChess}/> */}
       </div>
     );
   }
@@ -60,7 +67,7 @@ export default connect(
   (state, ownProps) => ({
     board: state.CounterReducer.board,
     result: state.CounterReducer.result,
-    player: state.CounterReducer.player
+    playing: state.CounterReducer.playing
   }),
   (dispatch, ownProps) => ({
     actions: bindActionCreators({ ...counterActions }, dispatch)

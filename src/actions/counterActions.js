@@ -1,15 +1,7 @@
 import ActionTypes from '../constants/ActionTypes';
 
-export const increase = () => ({
-  type: ActionTypes.INCREASE
-});
-
-export const decrease = () => ({
-  type: ActionTypes.DECREASE
-});
-
-export const newStep = (newStep, player) => ({
+export const newStep = (x, y) => ({
   type: ActionTypes.NEW_STEP,
-  newStep,
-  player
+  x,
+  y
 });

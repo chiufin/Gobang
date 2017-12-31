@@ -1,5 +1,5 @@
 import ActionTypes from '../constants/ActionTypes';
-import { updateObject, createReducer } from './reducerUtils';
+import { updateObject, createReducer } from '../utils/reducerUtils';
 import PopupConfig from '../constants/PopupConfig';
 
 const initialState = {

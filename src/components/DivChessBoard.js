@@ -13,29 +13,27 @@ class DivChessBoard extends Component {
   }
 
   render() {
-    const { board, playChess } = this.props;
+    console.log('render ----- ');
+    const { board, playing, playChess } = this.props;
     return (
       <div>
         <span>Div</span>
 
         <div>
-          {board.map((line, y) => {
-            return (
-              <div className="board__line" key={`line` + y}>
-                {line.map((piece, x) => {
-                  return (
-                    <div
-                      className="board__piece"
-                      key={`piece` + x}
-                      onClick={playChess.bind(this, x, y)}
-                    >
-                      {piece ? this.renderPiece(piece) : null}
-                    </div>
-                  );
-                })}
-              </div>
-            );
-          })}
+          {board.map((line, y) => (
+            <div className="board__line" key={`line` + y}>
+              {line.map((piece, x) => (
+                <div
+                  className="board__piece"
+                  key={`piece` + x}
+                  onClick={playChess.bind(this, x, y)}
+                >
+                  {/* {console.log(piece)} */}
+                  {piece ? this.renderPiece(piece) : null}
+                </div>
+              ))}
+            </div>
+          ))}
         </div>
       </div>
     );

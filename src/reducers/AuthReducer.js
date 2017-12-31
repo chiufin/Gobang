@@ -1,6 +1,6 @@
 // import ActionTypes from '../constants/ActionTypes'
-// import { updateObject, createReducer } from './reducerUtils'
-import { createReducer } from './reducerUtils';
+// import { updateObject, createReducer } from '../utils/reducerUtils'
+import { createReducer } from '../utils/reducerUtils';
 
 const initialState = {
   userName: '',

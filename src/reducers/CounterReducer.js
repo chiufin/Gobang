@@ -1,8 +1,7 @@
 import ActionTypes from '../constants/ActionTypes';
-import { updateObject, createReducer } from './reducerUtils';
+import { updateObject, createReducer } from '../utils/reducerUtils';
 
 const initialState = {
-  player: 'x',
   result: null,
   board: [
     [null, null, null, null, null, null],
@@ -12,7 +11,7 @@ const initialState = {
     [null, null, null, null, null, null],
     [null, null, null, null, null, null]
   ],
-  newStep: [0, 1],
+  playing: [],
   ignore: {
     leftTop_rightBottom: [
       [1, 0],
@@ -62,16 +61,26 @@ const initialState = {
 };
 
 const newStep = (state, action) => {
-  state.board[action.newStep[1]][action.newStep[0]] = state.player;
-
-  let nextPlayer = '';
-  if (state.player === 'x') {
-    nextPlayer = 'o';
-  } else if (state.player === 'o') {
-    nextPlayer = 'x';
+  console.log(action);
+  let thisPlayer = null;
+  let playingLen = state.playing.length;
+  if (playingLen < 1) {
+    thisPlayer = 'x';
+  } else if (state.playing[playingLen - 1].player === 'o') {
+    thisPlayer = 'x';
+  } else if (state.playing[playingLen - 1].player === 'x') {
+    thisPlayer = 'o';
   }
 
-  return updateObject(state, { newStep: action.newStep, player: nextPlayer });
+  return updateObject(state, {
+    playing: [
+      {
+        player: thisPlayer,
+        x: action.x,
+        y: action.y
+      }
+    ]
+  });
 };
 
 const changeGameResult = (state, action) =>
