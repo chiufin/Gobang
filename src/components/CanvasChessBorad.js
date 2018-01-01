@@ -7,6 +7,7 @@ class CanvasChessBorad extends Component {
     this.clickChess = this.clickChess.bind(this);
     this.renderInitCanvas = this.renderInitCanvas.bind(this);
     this.renderChess = this.renderChess.bind(this);
+    this.smallDot = this.smallDot.bind(this);
   }
 
   componentDidMount() {
@@ -26,27 +27,43 @@ class CanvasChessBorad extends Component {
   }
 
   line(lines, height) {
-    console.log('line');
-
     for (let i = 0; i < lines; i++) {
-      this.refs.ctx.moveTo(0, height * i + height);
-      this.refs.ctx.lineTo(180, height * i + height);
+      this.refs.ctx.moveTo(30, height * i + height);
+      this.refs.ctx.lineWidth = 0.5;
+      this.refs.ctx.lineTo(450, height * i + height);
     }
+    this.refs.ctx.stroke();
   }
 
   row(lines, width) {
     for (let i = 0; i < lines; i++) {
-      this.refs.ctx.moveTo(width * i + width, 0);
-      this.refs.ctx.lineTo(width * i + width, 180);
+      this.refs.ctx.moveTo(width * i + width, 30);
+      this.refs.ctx.lineTo(width * i + width, 450);
     }
+    this.refs.ctx.stroke();
+  }
+
+  smallDot() {
+    for (let i = 0; i < 2; i++) {
+      for (let j = 0; j < 2; j++) {
+        this.refs.ctx.beginPath();
+        this.refs.ctx.arc(i * 240 + 120, j * 240 + 120, 3, 0, 2 * Math.PI);
+        this.refs.ctx.fillStyle = '#666';
+        this.refs.ctx.fill();
+      }
+    }
+    this.refs.ctx.beginPath();
+    this.refs.ctx.arc(240, 240, 3, 0, 2 * Math.PI);
+    this.refs.ctx.fillStyle = '#666';
+    this.refs.ctx.fill();
   }
 
   renderInitCanvas() {
     this.refs.ctx.beginPath();
 
-    this.line(5, 30);
-    this.row(5, 30);
-    this.refs.ctx.stroke();
+    this.line(15, 30);
+    this.row(15, 30);
+    this.smallDot();
   }
 
   renderChess() {
@@ -95,9 +112,9 @@ class CanvasChessBorad extends Component {
             ref="canvas"
             id="myCanvas"
             onClick={this.clickChess}
-            width="180"
-            height="180"
-            style={{ border: '1px solid #000000', background: 'orange' }}
+            width="480"
+            height="480"
+            style={{ background: '#EEE' }}
           />
         </div>
       </div>
