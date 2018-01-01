@@ -87,8 +87,8 @@ class CanvasChessBorad extends Component {
     let roundingX = Math.round(Math.floor(x * 10) / 10);
     let roundingY = Math.round(Math.floor(y * 10) / 10);
 
-    console.log(`${roundingX},${roundingY}`);
-    this.props.playChess(roundingX, roundingY);
+    // console.log(`${roundingX},${roundingY}`);
+    this.props.playChess(roundingX - 1, roundingY - 1);
 
     let player;
     let { playing } = this.props;
@@ -100,7 +100,10 @@ class CanvasChessBorad extends Component {
     } else if (playing[playingLen - 1].player === 'o') {
       player = 'x';
     }
-    this.AddDot(player, roundingX, roundingY);
+
+    if (!this.props.board[roundingY - 1][roundingX - 1]) {
+      this.AddDot(player, roundingX, roundingY);
+    }
   }
 
   render() {
