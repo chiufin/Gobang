@@ -29,11 +29,12 @@ class CanvasPage extends Component {
   }
 
   renderPlayer(playing) {
-    if (playing.length === 0) {
+    let playingLen = playing.length;
+    if (playingLen === 0) {
       return <p>Player: 黑</p>;
-    } else if (playing[playing.length - 1].player === 'o') {
+    } else if (playing[playingLen - 1].player === 'o') {
       return <p>Player: 黑</p>;
-    } else if (playing[playing.length - 1].player === 'x') {
+    } else if (playing[playingLen - 1].player === 'x') {
       return <p>Player: 白</p>;
     }
   }
@@ -54,11 +55,11 @@ class CanvasPage extends Component {
           playChess={this.playChess}
         />
 
-        {/* <DivChessBoard
+        <DivChessBoard
           board={board}
           playing={playing}
           playChess={this.playChess}
-        /> */}
+        />
       </div>
     );
   }

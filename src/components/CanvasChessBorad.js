@@ -58,11 +58,14 @@ class CanvasChessBorad extends Component {
 
   clickChess(e) {
     console.log('playChess');
-    let x = (e.pageX - 81) / 30;
-    let y = (e.pageY - 383) / 30;
+    let x = (e.pageX - this.refs.canvas.offsetLeft) / 30;
+    let y = (e.pageY - this.refs.canvas.offsetTop) / 30;
 
-    console.log(`${e.pageX},${e.pageY}`);
-    console.log(`${x},${y}`);
+    // console.log(`offsetTop: ${this.refs.canvas.offsetLeft},${this.refs.canvas.offsetTop}`);
+    // console.log(`screen: ${e.screenX},${e.screenY}`);
+    // console.log(`client: ${e.clientX},${e.clientY}`);
+    // console.log(`page: ${e.pageX},${e.pageY}`);
+    // console.log(`${x},${y}`);
 
     let roundingX = Math.round(Math.floor(x * 10) / 10);
     let roundingY = Math.round(Math.floor(y * 10) / 10);
