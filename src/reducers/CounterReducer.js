@@ -5,16 +5,21 @@ import {
   createReducer
 } from '../utils/reducerUtils';
 
+let initBoard = (line, row) => {
+  let board = [];
+  let oneLine = [];
+  for (let i = 0; i < line; i++) {
+    oneLine.push(null);
+  }
+  for (let j = 0; j < row; j++) {
+    board.push(oneLine);
+  }
+  return board;
+};
+
 const initialState = {
   result: null,
-  board: [
-    [null, null, null, null, null, null],
-    [null, null, null, null, null, null],
-    [null, null, null, null, null, null],
-    [null, null, null, null, null, null],
-    [null, null, null, null, null, null],
-    [null, null, null, null, null, null]
-  ],
+  board: initBoard(15, 15),
   playing: [],
   ignore: {
     leftTop_rightBottom: [
