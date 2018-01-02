@@ -1,0 +1,113 @@
+*
+  box-sizing: border-box
+
+
+body 
+  margin: 0
+  padding: 0
+  font-family: sans-serif
+
+
+
+.board__bcg
+  position: relative
+  margin: 0 auto
+  width: 480px
+  height: 480px
+  padding: 30px
+  background: #eee
+
+.board__line
+  display: flex
+  width: 420px
+  height: 30px
+
+
+.board__line:nth-child(1)
+  border-top: 1px solid #666
+
+
+.board__piece
+  border-right: 1px solid #666
+  border-bottom: 1px solid #666
+  width: 30px
+  height: 30px
+
+//left
+.board__piece:nth-child(1)
+  border-left: 1px solid #666
+
+.board__overlay
+  position: absolute
+  top: 0
+  left: 0
+  width: 480px
+  height: 480px
+  z-index: 10
+  padding: 15px
+
+
+.board__overlay__line
+  display: flex
+  width: 450px
+  height: 30px
+
+
+.board__overlay__piece
+  width: 30px
+  height: 30px
+
+
+.board__smalldot--overlay
+  position: absolute
+  top: 0
+  left: 0
+  width: 480px
+  height: 480px
+  padding: 0
+
+.board__smalldot__line
+  display: flex
+  width: 480px
+  height: 240px
+
+.board__smalldot__block  
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 240px
+  height: 240px
+
+.board__smalldot
+  width: 6px
+  height: 6px
+  border-radius: 50%
+  background: #666
+
+.board__smalldot--overlay--center
+  position: absolute
+  top: 0
+  left: 0
+  width: 480px
+  height: 480px
+  display: flex
+  justify-content: center
+  align-items: center
+
+  
+
+
+.board__chess--black
+  margin: 5px
+  width: 20px
+  height: 20px
+  background: #333
+  border-radius: 50%
+
+
+.board__chess--white
+  margin: 5px
+  width: 20px
+  height: 20px
+  background: #fff
+  border-radius: 50%

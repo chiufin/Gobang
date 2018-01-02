@@ -28,6 +28,35 @@ class DivChessBoard extends Component {
     return <div>{renderLine}</div>;
   }
 
+  renderSideSmallDot() {
+    let renderLine = [];
+    let renderAll = [];
+
+    for (let i = 0; i < 2; i++) {
+      renderLine.push(
+        <div className="board__smalldot__block" key={`smalldot-${i}`}>
+          <div className="board__smalldot" />
+        </div>
+      );
+    }
+    for (let j = 0; j < 2; j++) {
+      renderAll.push(
+        <div className="board__smalldot__line" key={`line-${j}`}>
+          {renderLine}
+        </div>
+      );
+    }
+    return <div className="board__smalldot--overlay">{renderAll}</div>;
+  }
+
+  renderCenterSmallDot() {
+    return (
+      <div className="board__smalldot--overlay--center">
+        <div className="board__smalldot" />
+      </div>
+    );
+  }
+
   renderClickArea(x, y) {
     let renderLine = [];
     let renderBlock = [];
@@ -55,7 +84,8 @@ class DivChessBoard extends Component {
 
         <div className="board__bcg">
           {this.renderBlock(board[0].length, board.length)}
-          {/* {this.renderSmallDot()} */}
+          {this.renderCenterSmallDot()}
+          {this.renderSideSmallDot()}
           <div className="board__overlay">
             {board.map((line, y) => (
               <div className="board__overlay__line" key={`line-${y}`}>
@@ -76,19 +106,5 @@ class DivChessBoard extends Component {
     );
   }
 }
-// onClick={playChess.bind(this, x, y)}
 
 export default DivChessBoard;
-
-// {board.map((line, y) => (
-// 	<div className="board__line" key={`line` + y}>
-// 	  {line.map((piece, x) => (
-// 		<div
-// 		  className="board__piece"
-// 		  key={`piece` + x}
-// 		>
-// 	  {/* {piece ? this.renderPiece(piece) : null} */}
-// 		</div>
-// 		  ))}
-// 	</div>
-//   ))}
