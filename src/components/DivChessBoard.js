@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import * as counterActions from '../actions/counterActions';
+import * as gameActions from '../actions/gameActions';
 
 class DivChessBoard extends Component {
   renderChess(chess) {

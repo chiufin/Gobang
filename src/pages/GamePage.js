@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import * as counterActions from '../actions/counterActions';
+import * as gameActions from '../actions/gameActions';
 import CanvasChesBoard from '../components/CanvasChessBorad';
 import DivChessBoard from '../components/DivChessBoard';
 
@@ -67,11 +67,11 @@ class CanvasPage extends Component {
 
 export default connect(
   (state, ownProps) => ({
-    board: state.CounterReducer.board,
-    result: state.CounterReducer.result,
-    playing: state.CounterReducer.playing
+    board: state.GameReducer.board,
+    result: state.GameReducer.result,
+    playing: state.GameReducer.playing
   }),
   (dispatch, ownProps) => ({
-    actions: bindActionCreators({ ...counterActions }, dispatch)
+    actions: bindActionCreators({ ...gameActions }, dispatch)
   })
 )(CanvasPage);

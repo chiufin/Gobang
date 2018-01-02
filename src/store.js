@@ -5,19 +5,15 @@ import { reducer as formReducer } from 'redux-form';
 import createSagaMiddleware from 'redux-saga';
 import mySaga from './sagas';
 
-// import { reducer as formReducer } from 'redux-form'
-import CounterReducer from './reducers/CounterReducer';
-import AuthReducer from './reducers/AuthReducer';
-import AppReducer from './reducers/AppReducer';
+import GameReducer from './reducers/GameReducer';
+import PopupReducer from './reducers/PopupReducer';
 
 import ActionTypes from './constants/ActionTypes';
 
 export const configureStore = (history, initialState) => {
   const appReducer = combineReducers({
-    CounterReducer,
-    AuthReducer,
-    AppReducer,
-    form: formReducer,
+    GameReducer,
+    PopupReducer,
     routing: routerReducer
   });
 

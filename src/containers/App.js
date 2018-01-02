@@ -23,7 +23,7 @@ class App extends Component {
 export default connect(
   state => {
     return {
-      popupShow: state.AppReducer.popup.show
+      popupShow: state.PopupReducer.popup.show
     };
   },
   dispatch => ({
