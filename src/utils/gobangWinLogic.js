@@ -16,3 +16,22 @@ export const fiveInLine = (board, playing) => {
     }
   }
 };
+
+export const fiveInRow = (board, playing) => {
+  let { player, x } = playing[playing.length - 1];
+
+  let count = [0];
+  for (let i = 0; i < board.length; i++) {
+    let piece = board[i][x];
+    if (piece === player) {
+      count[count.length - 1] += 1;
+    } else {
+      count.push(0);
+    }
+  }
+  for (let i = 0; i < count.length; i++) {
+    if (count[i] === 5) {
+      return true;
+    }
+  }
+};
