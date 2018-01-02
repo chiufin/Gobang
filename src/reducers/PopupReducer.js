@@ -17,7 +17,6 @@ const initialState = {
 };
 
 const popupFillOutContent = (state, action) => {
-  console.log(action);
   let onePopupConfig = PopupConfig[action.condition];
 
   let template = action.template ? action.template : onePopupConfig.template;

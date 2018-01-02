@@ -70,7 +70,6 @@ const initialState = {
 };
 
 const newStep = (state, action) => {
-  console.log(action);
   let thisPlayer = null;
   let playingLen = state.playing.length;
   if (playingLen < 1) {

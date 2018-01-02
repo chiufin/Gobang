@@ -1,7 +1,4 @@
-import { connect } from 'react-redux';
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import * as gameActions from '../actions/gameActions';
 
 class DivChessBoard extends Component {
   renderChess(chess) {
@@ -72,12 +69,11 @@ class DivChessBoard extends Component {
         </div>
       );
     }
-    console.log(renderBlock);
     return <div className="board__overlay">{renderLine}</div>;
   }
 
   render() {
-    const { board, playing, playChess } = this.props;
+    const { board, playChess } = this.props;
     return (
       <div>
         <span>Div</span>

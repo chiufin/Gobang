@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux'
 import logo from '../images/stacccy.jpg';
-import '../styles/App.css';
+import '../styles/app.css';
 import Popup from './Popup';
 
 class App extends Component {

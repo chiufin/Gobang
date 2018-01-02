@@ -19,8 +19,7 @@
     "redux": "^3.7.2",
     "redux-form": "^7.2.0",
     "redux-saga": "^0.16.0",
-    "source-map-explorer": "^1.5.0",
-    "micro": "latest"
+    "source-map-explorer": "^1.5.0"
   },
   "devDependencies": {
     "react-router": "^3.0.5",
@@ -41,10 +40,8 @@
     "start-js": "react-scripts start",
     "build-js": "react-scripts build",
     "start": "npm-run-all -p watch-css start-js",
-    "now": "micro",
     "build": "npm-run-all -p build-css build-js",
     "test": "react-scripts test --env=jsdom",
-    "flow": "flow",
     "precommit": "lint-staged",
     "analyze": "source-map-explorer build/static/js/main.*",
     "eject": "react-scripts eject"
