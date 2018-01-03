@@ -5,7 +5,6 @@ class CanvasChessBorad extends Component {
     super(props);
     this.clickChess = this.clickChess.bind(this);
     this.renderInitCanvas = this.renderInitCanvas.bind(this);
-    this.renderChess = this.renderChess.bind(this);
     this.smallDot = this.smallDot.bind(this);
   }
 
@@ -14,9 +13,21 @@ class CanvasChessBorad extends Component {
     this.renderInitCanvas();
   }
 
+  componentDidUpdate() {
+    let { playing } = this.props;
+    let playingLen = playing.length;
+    if (playingLen > 0) {
+      this.AddDot(
+        playing[playingLen - 1].player,
+        playing[playingLen - 1].x,
+        playing[playingLen - 1].y
+      );
+    }
+  }
+
   AddDot(player, x, y) {
     this.refs.ctx.beginPath();
-    this.refs.ctx.arc(x * 30, y * 30, 10, 0, 2 * Math.PI);
+    this.refs.ctx.arc(x * 30 + 30, y * 30 + 30, 10, 0, 2 * Math.PI);
     if (player === 'x') {
       this.refs.ctx.fillStyle = 'black';
     } else if (player === 'o') {
@@ -65,36 +76,28 @@ class CanvasChessBorad extends Component {
     this.smallDot();
   }
 
-  renderChess() {
-    let { playing } = this.props;
-    for (let i = 0; i < playing.length; i++) {
-      this.AddDot(playing[i].player, playing[i].x, playing[i].y);
-    }
-  }
-
   clickChess(e) {
     let x = (e.pageX - this.refs.canvas.offsetLeft) / 30;
     let y = (e.pageY - this.refs.canvas.offsetTop) / 30;
 
-    let roundingX = Math.round(Math.floor(x * 10) / 10);
-    let roundingY = Math.round(Math.floor(y * 10) / 10);
+    let roundingX = Math.round(Math.floor(x * 10) / 10) - 1;
+    let roundingY = Math.round(Math.floor(y * 10) / 10) - 1;
+    this.props.playChess(roundingX, roundingY);
 
-    this.props.playChess(roundingX - 1, roundingY - 1);
+    // let player;
+    // let { playing } = this.props;
+    // let playingLen = playing.length;
+    // if (playingLen === 0) {
+    //   player = 'x';
+    // } else if (playing[playingLen - 1].player === 'x') {
+    //   player = 'o';
+    // } else if (playing[playingLen - 1].player === 'o') {
+    //   player = 'x';
+    // }
 
-    let player;
-    let { playing } = this.props;
-    let playingLen = playing.length;
-    if (playingLen === 0) {
-      player = 'x';
-    } else if (playing[playingLen - 1].player === 'x') {
-      player = 'o';
-    } else if (playing[playingLen - 1].player === 'o') {
-      player = 'x';
-    }
-
-    if (!this.props.board[roundingY - 1][roundingX - 1]) {
-      this.AddDot(player, roundingX, roundingY);
-    }
+    // if (!this.props.board[roundingY][roundingX]) {
+    //   this.AddDot(player, roundingX, roundingY);
+    // }
   }
 
   render() {

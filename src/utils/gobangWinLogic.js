@@ -79,8 +79,6 @@ export const fiveFromTopRight = (board, player, x, y) => {
     modifiedY = 0;
   }
 
-  console.log(`[${mX}, ${mY}] m: ${m}`);
-  // console.log(`x[${modifiedX}, ${modifiedY}]`)
   let count = [0];
 
   let run = true;
@@ -90,7 +88,6 @@ export const fiveFromTopRight = (board, player, x, y) => {
     } else {
       count.push(0);
     }
-    console.log(`x[${modifiedX}, ${modifiedY}]`);
     modifiedX--;
     modifiedY++;
     if (modifiedX === 0 || modifiedY === board.length - 1) {
