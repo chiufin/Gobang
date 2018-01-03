@@ -24,32 +24,36 @@ const initialState = {
 };
 
 const newStep = (state, action) => {
-  let thisPlayer = null;
-  let playingLen = state.playing.length;
-  if (playingLen < 1) {
-    thisPlayer = 'x';
-  } else if (state.playing[playingLen - 1].player === 'o') {
-    thisPlayer = 'x';
-  } else if (state.playing[playingLen - 1].player === 'x') {
-    thisPlayer = 'o';
-  }
-
-  return updateImmutableObject(state, {
-    playing: {
-      $push: [
-        {
-          player: thisPlayer,
-          x: action.x,
-          y: action.y
-        }
-      ]
-    },
-    board: {
-      [action.y]: {
-        [action.x]: { $set: thisPlayer }
-      }
+  if (state.result === 'x' || state.result === 'o') {
+    return updateImmutableObject(state, {});
+  } else {
+    let thisPlayer = null;
+    let playingLen = state.playing.length;
+    if (playingLen < 1) {
+      thisPlayer = 'x';
+    } else if (state.playing[playingLen - 1].player === 'o') {
+      thisPlayer = 'x';
+    } else if (state.playing[playingLen - 1].player === 'x') {
+      thisPlayer = 'o';
     }
-  });
+
+    return updateImmutableObject(state, {
+      playing: {
+        $push: [
+          {
+            player: thisPlayer,
+            x: action.x,
+            y: action.y
+          }
+        ]
+      },
+      board: {
+        [action.y]: {
+          [action.x]: { $set: thisPlayer }
+        }
+      }
+    });
+  }
 };
 
 const changeGameResult = (state, action) =>
