@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux'
 import logo from '../images/stacccy.jpg';
-import '../styles/app.css';
+import '../styles/styles.css';
 import Popup from './Popup';
 
 class App extends Component {
@@ -10,11 +10,11 @@ class App extends Component {
     return (
       <div className="App">
         {this.props.popupShow && <Popup />}
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Stacccy's Sample App</h2>
+        <div className="App__header">
+          <img src={logo} className="App__logo" alt="logo" />
+          <h2>Stacccy's 五子棋</h2>
         </div>
-        <div className="App-intro">{this.props.children}</div>
+        <div className="App__intro">{this.props.children}</div>
       </div>
     );
   }
