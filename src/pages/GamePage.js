@@ -29,13 +29,17 @@ class CanvasPage extends Component {
   }
 
   renderPlayer(playing) {
-    let playingLen = playing.length;
-    if (playingLen === 0) {
-      return <p>Player: 黑</p>;
-    } else if (playing[playingLen - 1].player === 'o') {
-      return <p>Player: 黑</p>;
-    } else if (playing[playingLen - 1].player === 'x') {
-      return <p>Player: 白</p>;
+    if (this.props.result === 'x' || this.props.result === 'o') {
+      return null;
+    } else {
+      let playingLen = playing.length;
+      if (playingLen === 0) {
+        return <p>Player: 黑</p>;
+      } else if (playing[playingLen - 1].player === 'o') {
+        return <p>Player: 黑</p>;
+      } else if (playing[playingLen - 1].player === 'x') {
+        return <p>Player: 白</p>;
+      }
     }
   }
 
