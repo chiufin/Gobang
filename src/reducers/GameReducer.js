@@ -18,10 +18,14 @@ let initBoard = (line, row) => {
 };
 
 const initialState = {
+  isCanvasSupported: null,
   result: null,
   board: initBoard(15, 15),
   playing: []
 };
+
+const isCanvasSupported = (state, action) =>
+  updateObject(state, { isCanvasSupported: action.isCanvasSupport });
 
 const newStep = (state, action) => {
   if (state.result === 'x' || state.result === 'o') {
@@ -60,6 +64,7 @@ const changeGameResult = (state, action) =>
   updateObject(state, { result: action.result });
 
 export default createReducer(initialState, {
+  [ActionTypes.IS_CANVAS_SUPPORTED]: isCanvasSupported,
   [ActionTypes.NEW_STEP]: newStep,
   [ActionTypes.CHANGE_GAME_RESULT]: changeGameResult
 });

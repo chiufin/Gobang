@@ -5,3 +5,8 @@ export const newStep = (x, y) => ({
   x,
   y
 });
+
+export const isCanvasSupported = isCanvasSupport => ({
+  type: ActionTypes.IS_CANVAS_SUPPORTED,
+  isCanvasSupport
+});

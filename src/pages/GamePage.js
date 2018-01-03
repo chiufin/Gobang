@@ -9,6 +9,18 @@ class CanvasPage extends Component {
   constructor(props) {
     super(props);
     this.playChess = this.playChess.bind(this);
+    this.isCanvasSupported = this.isCanvasSupported.bind(this);
+  }
+
+  isCanvasSupported() {
+    var elem = document.createElement('canvas');
+    return !!(elem.getContext && elem.getContext('2d'));
+  }
+
+  componentWillMount() {
+    let boolean = this.isCanvasSupported();
+    console.log(boolean);
+    this.props.actions.isCanvasSupported(boolean);
   }
 
   renderResult(result) {
@@ -23,13 +35,16 @@ class CanvasPage extends Component {
   }
 
   playChess(x, y) {
-    if (!this.props.board[y][x]) {
+    if (!this.props.gameReducer.board[y][x]) {
       this.props.actions.newStep(x, y);
     }
   }
 
   renderPlayer(playing) {
-    if (this.props.result === 'x' || this.props.result === 'o') {
+    if (
+      this.props.gameReducer.result === 'x' ||
+      this.props.gameReducer.result === 'o'
+    ) {
       return null;
     } else {
       let playingLen = playing.length;
@@ -44,8 +59,13 @@ class CanvasPage extends Component {
   }
 
   render() {
-    const { result, board, playing } = this.props;
-
+    const {
+      result,
+      board,
+      playing,
+      isCanvasSupported
+    } = this.props.gameReducer;
+    console.log(this);
     return (
       <div>
         <div>
@@ -53,17 +73,19 @@ class CanvasPage extends Component {
           <p>Result:{this.renderResult(result)}</p>
         </div>
 
-        <CanvasChesBoard
-          board={board}
-          playing={playing}
-          playChess={this.playChess}
-        />
-
-        <DivChessBoard
-          board={board}
-          playing={playing}
-          playChess={this.playChess}
-        />
+        {isCanvasSupported ? (
+          <CanvasChesBoard
+            board={board}
+            playing={playing}
+            playChess={this.playChess}
+          />
+        ) : (
+          <DivChessBoard
+            board={board}
+            playing={playing}
+            playChess={this.playChess}
+          />
+        )}
       </div>
     );
   }
@@ -71,9 +93,7 @@ class CanvasPage extends Component {
 
 export default connect(
   (state, ownProps) => ({
-    board: state.GameReducer.board,
-    result: state.GameReducer.result,
-    playing: state.GameReducer.playing
+    gameReducer: state.GameReducer
   }),
   (dispatch, ownProps) => ({
     actions: bindActionCreators({ ...gameActions }, dispatch)
