@@ -82,7 +82,14 @@ class CanvasChessBorad extends Component {
 
     let roundingX = Math.round(Math.floor(x * 10) / 10) - 1;
     let roundingY = Math.round(Math.floor(y * 10) / 10) - 1;
-    this.props.playChess(roundingX, roundingY);
+    if (
+      roundingX >= 0 &&
+      roundingY >= 0 &&
+      roundingX < this.props.board[0].length &&
+      roundingY < this.props.board.length
+    ) {
+      this.props.playChess(roundingX, roundingY);
+    }
 
     // let player;
     // let { playing } = this.props;

@@ -19,7 +19,6 @@ class CanvasPage extends Component {
 
   componentWillMount() {
     let boolean = this.isCanvasSupported();
-    console.log(boolean);
     this.props.actions.isCanvasSupported(boolean);
   }
 
@@ -49,11 +48,11 @@ class CanvasPage extends Component {
     } else {
       let playingLen = playing.length;
       if (playingLen === 0) {
-        return <p>现在玩家: 黑</p>;
+        return <p>现在玩家: 黑棋</p>;
       } else if (playing[playingLen - 1].player === 'o') {
-        return <p>现在玩家: 黑</p>;
+        return <p>现在玩家: 黑棋</p>;
       } else if (playing[playingLen - 1].player === 'x') {
-        return <p>现在玩家: 白</p>;
+        return <p>现在玩家: 白棋</p>;
       }
     }
   }
@@ -65,7 +64,6 @@ class CanvasPage extends Component {
       playing,
       isCanvasSupported
     } = this.props.gameReducer;
-    console.log(this);
     return (
       <div>
         <div>
