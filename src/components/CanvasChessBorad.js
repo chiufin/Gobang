@@ -110,8 +110,7 @@ class CanvasChessBorad extends Component {
   render() {
     return (
       <div>
-        <span>Canvas</span>
-        <div style={{ margin: '30px' }}>
+        <div>
           <canvas
             ref="canvas"
             id="myCanvas"

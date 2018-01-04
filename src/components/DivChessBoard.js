@@ -76,8 +76,6 @@ class DivChessBoard extends Component {
     const { board, playChess } = this.props;
     return (
       <div>
-        <span>Div</span>
-
         <div className="board__bcg">
           {this.renderBlock(board[0].length, board.length)}
           {this.renderCenterSmallDot()}

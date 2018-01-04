@@ -12,7 +12,7 @@ class App extends Component {
         {this.props.popupShow && <Popup />}
         <div className="App__header">
           <img src={logo} className="App__logo" alt="logo" />
-          <h2>Stacccy's 五子棋</h2>
+          <h3>Stacccy's 五子棋</h3>
         </div>
         <div className="App__intro">{this.props.children}</div>
       </div>
