@@ -20,7 +20,7 @@ class CanvasPage extends Component {
 
   componentWillMount() {
     let boolean = this.isCanvasSupported();
-    this.props.actions.isCanvasSupported(false);
+    this.props.actions.isCanvasSupported(boolean);
   }
 
   renderResult(result) {
