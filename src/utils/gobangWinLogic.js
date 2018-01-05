@@ -51,11 +51,11 @@ export const fiveFromTopLeft = (board, player, x, y) => {
     } else {
       count.push(0);
     }
-    modifiedX++;
-    modifiedY++;
     if (modifiedX === board[0].length - 1 || modifiedY === board.length - 1) {
       run = false;
     }
+    modifiedX++;
+    modifiedY++;
   }
 
   for (let i = 0; i < count.length; i++) {
@@ -71,6 +71,10 @@ export const fiveFromTopRight = (board, player, x, y) => {
   let m = mY / mX;
   let modifiedX;
   let modifiedY;
+
+  console.log(`x ${x}`);
+  console.log(`y ${y}`);
+
   if (m >= 1) {
     modifiedX = board[0].length - 1;
     modifiedY = y - mX;
@@ -79,6 +83,8 @@ export const fiveFromTopRight = (board, player, x, y) => {
     modifiedY = 0;
   }
 
+  console.log(`modifiedX ${modifiedX}`);
+  console.log(`modifiedY ${modifiedY}`);
   let count = [0];
 
   let run = true;
@@ -88,11 +94,11 @@ export const fiveFromTopRight = (board, player, x, y) => {
     } else {
       count.push(0);
     }
-    modifiedX--;
-    modifiedY++;
     if (modifiedX === 0 || modifiedY === board.length - 1) {
       run = false;
     }
+    modifiedX--;
+    modifiedY++;
   }
 
   for (let i = 0; i < count.length; i++) {
