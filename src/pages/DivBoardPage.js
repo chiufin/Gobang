@@ -2,25 +2,12 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import * as gameActions from '../actions/gameActions';
-import CanvasChesBoard from '../components/CanvasChessBorad';
 import DivChessBoard from '../components/DivChessBoard';
 
-class GamePage extends Component {
+class DivBoardPage extends Component {
   constructor(props) {
     super(props);
     this.playChess = this.playChess.bind(this);
-    this.isCanvasSupported = this.isCanvasSupported.bind(this);
-    this.renderSkill = this.renderSkill.bind(this);
-  }
-
-  isCanvasSupported() {
-    var elem = document.createElement('canvas');
-    return !!(elem.getContext && elem.getContext('2d'));
-  }
-
-  componentWillMount() {
-    let boolean = this.isCanvasSupported();
-    this.props.actions.isCanvasSupported(boolean);
   }
 
   renderResult(result) {
@@ -58,44 +45,21 @@ class GamePage extends Component {
     }
   }
 
-  renderSkill(boolean) {
-    if (boolean === true) {
-      return <p>渲染方式 Canvas</p>;
-    } else if (boolean === false) {
-      return <p>渲染方式 Div</p>;
-    } else {
-      return null;
-    }
-  }
-
   render() {
-    const {
-      result,
-      board,
-      playing,
-      isCanvasSupported
-    } = this.props.gameReducer;
+    const { result, board, playing } = this.props.gameReducer;
     return (
       <div>
         <div className="board__status">
           {this.renderPlayer(playing)}
           {this.renderResult(result)}
-          {this.renderSkill(isCanvasSupported)}
+          <p>渲染方式 Div</p>
         </div>
 
-        {isCanvasSupported ? (
-          <CanvasChesBoard
-            board={board}
-            playing={playing}
-            playChess={this.playChess}
-          />
-        ) : (
-          <DivChessBoard
-            board={board}
-            playing={playing}
-            playChess={this.playChess}
-          />
-        )}
+        <DivChessBoard
+          board={board}
+          playing={playing}
+          playChess={this.playChess}
+        />
       </div>
     );
   }
@@ -108,4 +72,4 @@ export default connect(
   (dispatch, ownProps) => ({
     actions: bindActionCreators({ ...gameActions }, dispatch)
   })
-)(GamePage);
+)(DivBoardPage);

@@ -90,21 +90,6 @@ class CanvasChessBorad extends Component {
     ) {
       this.props.playChess(roundingX, roundingY);
     }
-
-    // let player;
-    // let { playing } = this.props;
-    // let playingLen = playing.length;
-    // if (playingLen === 0) {
-    //   player = 'x';
-    // } else if (playing[playingLen - 1].player === 'x') {
-    //   player = 'o';
-    // } else if (playing[playingLen - 1].player === 'o') {
-    //   player = 'x';
-    // }
-
-    // if (!this.props.board[roundingY][roundingX]) {
-    //   this.AddDot(player, roundingX, roundingY);
-    // }
   }
 
   render() {
