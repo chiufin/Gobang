@@ -80,7 +80,7 @@ class CanvasPage extends Component {
         <div className="board__status">
           {this.renderPlayer(playing)}
           {this.renderResult(result)}
-          <p>{this.renderSkill(isCanvasSupported)}</p>
+          {this.renderSkill(isCanvasSupported)}
         </div>
 
         {isCanvasSupported ? (
