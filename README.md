@@ -16,7 +16,7 @@ demo page: [https://chiufin.github.io/](https://chiufin.github.io/)
 1. 写个单机五子棋，带胜负判断，不需要人机对战。可用任何框架。
     - 使用 `react + redux`
     - 逻辑判断: 新的一颗棋，判断这一行的垂直、水平、左上到右下、右上到左上是否有五颗棋连起来 (src/utils/gobangWinLogic.js)
-    - 獲勝的時候，鎖住盤面，并且出现获胜字眼
+    - 获胜的时候，锁住棋盘，并且出现获胜字眼
 2. 当用户浏览器支持Canvas，使用Canvas渲染，否则降级用Div渲染
     - 页面进入点是src/pages/GamePage.js，在componentWillMount时，判断使用canvas或div
 3. 想办法使得后续 切换界面实现方式成本最低。(例如未来如果想增加个webGL的渲染方式，尽量少更动原本的代码)
